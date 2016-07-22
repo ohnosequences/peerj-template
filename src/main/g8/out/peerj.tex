@@ -17,6 +17,10 @@
 \let\OldHref\href
 \renewcommand{\href}[2]{\OldHref[pdfnewwindow]{#1}{{#2}}}
 
+% ugly fix for latest pandoc
+\providecommand{\tightlist}{%
+\setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+
 \title{$title$}
 
 $for(authors)$
