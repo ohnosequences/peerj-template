@@ -1,23 +1,28 @@
 %
 % An unofficial LaTeX class for PeerJ articles.
 %
-% Created by writeLaTeX.
+% Created by Overleaf (writeLaTeX).
 %
 % Based on the SelfArx document class.
 %
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{wlpeerj}[23/01/2014, v1.0]
+\ProvidesClass{wlpeerj}[24/11/2015, v1.1]
 \RequirePackage[utf8]{inputenc}
 \RequirePackage[english]{babel}
 
 \RequirePackage{ifthen}
 \RequirePackage{calc}
 \AtEndOfClass{\RequirePackage{microtype}}
+\newif\if@peerjlineno
+\DeclareOption{lineno}{\@peerjlinenotrue}
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{article}}
 \ProcessOptions*
 \LoadClass{article}
 \RequirePackage{times}      % Loads the Times-Roman Fonts
 \RequirePackage{mathptmx}   % Loads the Times-Roman Math Fonts
+\RequirePackage{lineno}     % For numbering the lines if lineno option is given
+\if@peerjlineno\linenumbers\fi
+
 \RequirePackage{ifpdf}
 
 \RequirePackage{amsmath,amsfonts,amssymb}
@@ -31,11 +36,11 @@
                 bottom=2.25cm,%
                 headheight=12pt,%
                 letterpaper]{geometry}%
-                
+
 \RequirePackage[labelfont={bf,sf},%
                 labelsep=period,%
                 justification=raggedright]{caption}
-                
+
 \RequirePackage{natbib}
 \bibliographystyle{apalike}
 
@@ -45,7 +50,7 @@
 \newcommand\wllogo{%
 \renewcommand*\rmdefault{ugq}\normalfont\upshape{}write%
 \renewcommand*\rmdefault{cmr}\normalfont\upshape{\bf\LaTeX}}
-                
+
 %
 % headers and footers
 %
@@ -78,7 +83,7 @@
   {}
   {0em}
   {\MakeUppercase{#1}}
-  []  
+  []
 \titleformat{\subsection}
   {\sffamily\bfseries}
   {\thesubsection}
@@ -90,12 +95,12 @@
   {\thesubsubsection}
   {0.5em}
   {#1}
-  []    
+  []
 \titleformat{\paragraph}[runin]
   {\sffamily\small\bfseries}
   {}
   {0em}
-  {#1} 
+  {#1}
 \titlespacing*{\section}{0pc}{3ex \@plus4pt \@minus3pt}{5pt}
 \titlespacing*{\subsection}{0pc}{2.5ex \@plus3pt \@minus2pt}{0pt}
 \titlespacing*{\subsubsection}{0pc}{2ex \@plus2.5pt \@minus1.5pt}{0pt}
@@ -123,8 +128,8 @@
   {}
   {}
   {}
-  [\ \textbullet\ ]  
-  
+  [\ \textbullet\ ]
+
 \RequirePackage{enumitem}
 %\setlist{nolistsep} % Uncomment to remove spacing between items in lists (enumerate, itemize)
 
@@ -137,7 +142,7 @@
 \newcommand{\keywords}[1]{\def\@keywords{#1}}
 
 \def\xabstract{abstract}
-\long\def\abstract#1\end#2{\def\two{#2}\ifx\two\xabstract 
+\long\def\abstract#1\end#2{\def\two{#2}\ifx\two\xabstract
 \long\gdef\theabstract{\ignorespaces#1}
 \def\go{\end{abstract}}\else
 \typeout{^^J^^J PLEASE DO NOT USE ANY \string\begin\space \string\end^^J
@@ -148,7 +153,7 @@ THE ABSTRACT\vskip12pt}\let\go\relax\fi
 \go}
 
 %
-% custom title page 
+% custom title page
 %
 \renewcommand{\@maketitle}{%
 {%
@@ -162,17 +167,18 @@ THE ABSTRACT\vskip12pt}\let\go\relax\fi
 \noindent
 {\parbox{\dimexpr\linewidth-2\fboxsep\relax}{\color{color1}\large\sffamily\textbf{ABSTRACT}}}
 }%
-\vskip10pt
+\vskip10pt\nolinenumbers
 {%
 \noindent
 \colorbox{color2}{%
 \parbox{\dimexpr\linewidth-2\fboxsep\relax}{%
-\sffamily\small\textbf\\\theabstract
+\sffamily\small\vskip1ex\if@peerjlineno\internallinenumbers\fi\theabstract
 }%
 }%
 \vskip18pt%
 \noindent
 \parbox{\dimexpr\linewidth-2\fboxsep\relax}{%
+\if@peerjlineno\internallinenumbers\fi%
 {\color{color1}\keywordname\hspace*{1em}} \@keywords%
 }%
 }%
@@ -187,10 +193,10 @@ THE ABSTRACT\vskip12pt}\let\go\relax\fi
 \definecolor{color2}{RGB}{250,232,207} % Color of the box behind the abstract
 \newcommand{\keywordname}{Keywords:} % Defines the keywords heading name
 
-\renewcommand\Authfont{\fontsize{12}{12}\usefont{OT1}{phv}{b}{n}}
-\renewcommand\Affilfont{\fontsize{10}{10}\usefont{OT1}{phv}{b}{n}}
+\renewcommand\Authfont{\fontsize{12}{14}\usefont{OT1}{phv}{b}{n}}
+\renewcommand\Affilfont{\fontsize{10}{12}\usefont{OT1}{phv}{b}{n}}
 
-\newlength{\tocsep} 
+\newlength{\tocsep}
 \setlength\tocsep{1.5pc} % Sets the indentation of the sections in the table of contents
 \setcounter{tocdepth}{3} % Show only three levels in the table of contents section: sections, subsections and subsubsections
 
