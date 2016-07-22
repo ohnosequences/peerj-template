@@ -5,10 +5,10 @@ authors:
 - name: Salustiano Gonzalez
   affiliation: Mi casa
   position: 1
-- name: Epifanio sincretico
+- name: Epifanio sincrético
   affiliation: Su casa
   position: 2
-- name: Ataulfo encarnado
+- name: Ataúlfo encarnado
   affiliation: Universidad de Lepe
   position: 3
 
