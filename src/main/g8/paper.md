@@ -31,4 +31,6 @@ My house's yard is private property; when it rains though, it gets wet. Most sur
 
 ## Results and Discussion
 
+See [@Alcantara2013].
+
 ## Acknowledgments
