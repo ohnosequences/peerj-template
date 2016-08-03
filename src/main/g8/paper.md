@@ -2,15 +2,18 @@
 title: "We are really happy, and we don't know why"
 
 authors:
-- name: Salustiano Gonzalez
-  affiliation: Mi casa
-  position: 1
+- name: Salustiano González
+  affiliation: 1
 - name: Epifanio sincrético
-  affiliation: Su casa
-  position: 2
+  affiliation: 2
 - name: Ataúlfo encarnado
-  affiliation: Universidad de Lepe
-  position: 3
+  affiliation: 1
+
+affiliations:
+- number: 1
+  name: "Universidad de Lepe"
+- number: 2
+  name: "Un lugar de la Mancha"
 
 abstract: |
   Or _concrete_.
